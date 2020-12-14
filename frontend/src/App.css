@@ -1,0 +1,27 @@
+body {
+  display: block;
+}
+
+.App {
+  text-align: left;
+}
+
+.App-header {
+  
+}
+
+.App-main {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.ReactModal__Content {
+  top: 50% !important;
+  left: 50% !important;
+  margin-left: -150px !important;
+  margin-top: -200px !important;
+  bottom: auto !important;
+  right: auto !important;
+}
+
+

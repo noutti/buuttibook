@@ -1,0 +1,67 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/noutti/buuttibook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noutti/buuttibook/issues"
+  },
+  "homepage": "https://github.com/noutti/buuttibook#readme",
+  "description": "",
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "env": {
+      "es6": true,
+      "browser": true
+    },
+    "rules": {
+      "indent": [
+        "error",
+        4
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 100
+        }
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "linebreak-style": [
+        "error",
+        "windows"
+      ],
+      "operator-linebreak": [
+        "error",
+        "after"
+      ],
+      "import/extensions": [
+        "warn",
+        "ignorePackages"
+      ],
+      "no-console": [
+        "off"
+      ]
+    }
+  }
+}
