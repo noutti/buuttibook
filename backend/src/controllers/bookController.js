@@ -38,17 +38,22 @@ export const editBook = async (request, response) => {
         description,
     } = request.body;
 
-    const book = BookModel.findByIdAndUpdate(id,
-        {
-            title,
-            author,
-            description,
-        },
-        { new: true }).then(() => {
-        response.status(200).json(book);
-    }).catch((error) => {
-        response.status(500).json({ error: error.message });
-    });
+    // Don't let user set fields to empty
+    if (!title || !author || !description) {
+        response.status(400).json({ error: "Fill all required fields." });
+    } else {
+        const book = BookModel.findByIdAndUpdate(id,
+            {
+                title,
+                author,
+                description,
+            },
+            { new: true }).then(() => {
+            response.status(200).json(book);
+        }).catch((error) => {
+            response.status(500).json({ error: error.message });
+        });
+    }
 };
 
 export const deleteBook = async (request, response) => {

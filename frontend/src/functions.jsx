@@ -11,61 +11,51 @@ export const sendRequest = (body, method) => {
     });
 };
 
-export const getBooks = (setBooks) => {
-    console.log("GET BOOKS");
+export const getBooks = (setBooks, setResponseData) => {
     sendRequest(undefined,
     "GET").then((response) => {
         setBooks(response.data);
     }).catch((error) => {
-        error.response ? 
-            console.log(error.response.data) :
-            console.log(error.message);
+        setResponseData(error);
     });
 };
 
-export const saveClicked = (id, title, author, description) => {
-    console.log("SAVE CLICKED");
+export const saveClicked = (id, title, author, description, setResponseData, clearSelection) => {
     sendRequest({
         "id":id,
-        "title":title,
-        "author":author,
-        "description":description
+        "title":title.trim(),
+        "author":author.trim(),
+        "description":description.trim()
     }, 
     "PUT").then((response) => {
-        console.log(response.status);
+        setResponseData(response);
+        clearSelection();
     }).catch((error) => {
-        error.response ? 
-            console.log(error.response.data) :
-            console.log(error.message);
+        setResponseData(error);
     });
 };
 
-export const saveNewClicked = (title, author, description) => {
-    console.log("NEW CLICKED");
+export const saveNewClicked = (title, author, description, setResponseData) => {
     sendRequest({
-        "title":title,
-        "author":author,
-        "description":description
+        "title":title.trim(),
+        "author":author.trim(),
+        "description":description.trim()
     }, 
     "POST").then((response) => {
-        console.log(response.status);
+        setResponseData(response);
     }).catch((error) => {
-        error.response ? 
-            console.log(error.response.data) :
-            console.log(error.message);
+        setResponseData(error);
     });
 };
 
-export const deleteClicked = (id) => {
-    console.log("DELETE CLICKED");
+export const deleteClicked = (id, setResponseData, clearSelection) => {
     sendRequest({
         "id":id
     }, 
     "DELETE").then((response) => {
-        console.log(response.status);
+        setResponseData(response);
+        clearSelection();
     }).catch((error) => {
-        error.response ? 
-            console.log(error.response.data) :
-            console.log(error.message);
+        setResponseData(error);
     });
 };

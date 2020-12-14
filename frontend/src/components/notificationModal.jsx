@@ -1,5 +1,6 @@
-import React from 'react';
-import Modal from 'react-modal';
+import React from "react";
+import Modal from "react-modal";
+import '../App.css';
 
 Modal.setAppElement('#root');
 
@@ -12,7 +13,7 @@ const NotificationModal = (props) => {
     } = props;
 
     const OKClicked = () => {
-        setVisible(null);
+        setVisible(false);
     }
 
     return (
@@ -20,6 +21,7 @@ const NotificationModal = (props) => {
             isOpen={visible}
             onRequestClose={() => setVisible(null)}
             contentLabel="Notification"
+            portalClassName="modal"
             >
             <div className="Notification">
                 <h2>{title}</h2>
