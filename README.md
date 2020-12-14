@@ -2,7 +2,9 @@
 
 This program was made using React and Node.js and MongoDB.
 
-##How to run the app
+### For the database implementation to work, you need to have a MongoDB server running on your local computer!
+
+## How to run the app
 
 Run these commands in your terminal:
 ```
