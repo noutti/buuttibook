@@ -13,10 +13,14 @@ app.use(cors());
 const mongoUrl = "mongodb://localhost:27017/bookdb";
 
 const connectMongoose = async () => {
-    await mongoose.connect(
-        mongoUrl,
-        { useNewUrlParser: true, useUnifiedTopology: true },
-    );
+    try {
+        await mongoose.connect(
+            mongoUrl,
+            { useNewUrlParser: true, useUnifiedTopology: true },
+        );
+    } catch (error) {
+        console.log(`Connecting to MongoDB failed: ${error.message}`);
+    }
 };
 
 connectMongoose();

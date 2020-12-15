@@ -21,16 +21,15 @@ export const addBook = (request, response) => {
     });
 };
 
-export const getBooks = async (request, response) => {
-    const books = await BookModel.find();
-    if (books) {
-        response.status(200).json(books);
-    } else {
-        response.status(404).json({ error: "No books found" });
-    }
+export const getBooks = (request, response) => {
+    BookModel.find().then((res) => {
+        response.status(200).json(res);
+    }).catch((error) => {
+        response.status(500).json({ error: error.message });
+    });
 };
 
-export const editBook = async (request, response) => {
+export const editBook = (request, response) => {
     const {
         id,
         title,
@@ -42,21 +41,21 @@ export const editBook = async (request, response) => {
     if (!title || !author || !description) {
         response.status(400).json({ error: "Fill all required fields." });
     } else {
-        const book = BookModel.findByIdAndUpdate(id,
+        BookModel.findByIdAndUpdate(id,
             {
                 title,
                 author,
                 description,
             },
-            { new: true }).then(() => {
-            response.status(200).json(book);
+            { new: true }).then((res) => {
+            response.status(200).json(res);
         }).catch((error) => {
             response.status(500).json({ error: error.message });
         });
     }
 };
 
-export const deleteBook = async (request, response) => {
+export const deleteBook = (request, response) => {
     const { id } = request.body;
     BookModel.findByIdAndDelete(id).then(() => {
         response.status(200).end();

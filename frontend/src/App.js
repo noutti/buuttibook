@@ -58,7 +58,9 @@ const App = () => {
   );
 
   const selectionChanged = (e) => {
-    setSelectedBook(books.find((book) => book._id === e.target.value));
+    if (books && books.length) {
+      setSelectedBook(books.find((book) => book._id === e.target.value));
+    }
   }; 
 
 
