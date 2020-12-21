@@ -53,7 +53,7 @@ const App = () => {
 
   const bookView = () => (
     books.map((item, index) => {
-      return <option key={index} value={item._id}>{item.title}</option>
+      return <option key={index} value={item._id}>{item.title}, {item.author}</option>
     })
   );
 
